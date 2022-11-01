@@ -3,21 +3,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="/stylesheets/form.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="/public/javascript/script.js"></script>
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <title>Login Form</title>
   </head>
   <body>
@@ -35,14 +26,7 @@
     <div class="container-r">
       <div class="form-container">
         <!-- FORM -->
-        <form
-          id="oke"
-          method="POST"
-          action="http://localhost:3000/login/"
-          id="form"
-          name="form"
-          onsubmit="return validate()"
-        >
+        <form method="POST" action="http://localhost:3000/login/" id="form" name="form" onsubmit="return validate()">
           <h1>Login to Easy Bank</h1>
           <div class="socials">
             <div class="social">
@@ -59,27 +43,9 @@
             </div>
           </div>
           <div class="fields">
-            <input
-              name="username"
-              type="text"
-              placeholder="Username"
-              autocomplete="on"
-              id="username"
-            />
-            <input
-              name="password"
-              type="password"
-              placeholder="Password"
-              autocomplete="off"
-              id="password"
-            />
-            <button
-              class="btn-submit"
-              type="submit"
-              value="submit"
-              id="submit"
-              onsubmit="return validate()"
-            >SIGN IN</button>
+            <input name="username" type="text" placeholder="Username" autocomplete="off" id="username" />
+            <input name="password" type="password" placeholder="Password" autocomplete="off" id="password" />
+            <button class="btn-submit" type="submit" value="submit" id="submit" onsubmit="return validate()">SIGN IN</button>
           </div>
           <div class="links">
             <div class="link">Don't have an account?
