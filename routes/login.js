@@ -1,8 +1,10 @@
+const e = require("express");
 var express = require("express");
-const validate = require("../controllers/validateForm");
+const { checkSession, checkSession2, checkLogin } = require("../controllers/userController");
 var router = express.Router();
 bodyParser = require("body-parser");
 const result = require("../model/connectDB");
+
 var app = express();
 
 app.use(express.json());
@@ -10,24 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 /* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.render("form", { title: "Login Form" });
-});
-router.post("/", (req, res, next) => {
-  const userRoot = "admin";
-  const pwdRoot = "admin";
+router.get("/", checkSession2);
 
-  const userRoot1 = "admin1";
-  const pwdRoot1 = "admin1";
-
-  const { username, password } = req.body;
-
-  if ((username === userRoot1 && password === pwdRoot1) || (username === userRoot && password === pwdRoot)) {
-    // return res.redirect("/user");
-    var passedVariable = req.body.username;
-    return res.redirect("/user/" + passedVariable);
-  } else {
-    return res.send(`<script>alert("INVALID USERNAME OR PASSWORD"); window.location.href = "/login"; </script>`);
-  }
-});
+router.post("/", checkLogin);
 module.exports = router;

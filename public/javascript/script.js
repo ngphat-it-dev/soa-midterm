@@ -5,7 +5,6 @@ const validate = () => {
   if (username.value === "" || username.value == null) {
     alert("Please enter your username.");
     username.focus();
-
     return false;
   }
   if (password.value === "" || password.value == null) {

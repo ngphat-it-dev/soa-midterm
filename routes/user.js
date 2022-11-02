@@ -1,15 +1,13 @@
 var express = require("express");
+const { checkUser, getData } = require("../controllers/userController");
 const result = require("../model/connectDB");
+const userModel = require("../model/user.model");
 var router = express.Router();
 
 /* GET user page. */
-router.get("/", function (req, res, next) {
-  return res.send("USER PAGE");
-});
-
-router.get("/:username", function (req, res, next) {
-  const username = req.params.username;
-  res.send(username);
-});
+router.get("/", checkUser);
+router.get("/:username", getData);
+router.post("/:username", getData);
+// router.post("/test", getData);
 
 module.exports = router;

@@ -3,16 +3,24 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-
 var indexRouter = require("./routes/index");
 var loginRouter = require("./routes/login");
 var userRouter = require("./routes/user");
-
+var session = require("express-session");
 var app = express();
+require("./model/connectDB");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
+
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 app.use(logger("dev"));
 app.use(express.json());
