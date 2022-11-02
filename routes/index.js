@@ -6,9 +6,4 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "IBanking" });
 });
 
-router.get("/user/:username", function (req, res, next) {
-  const username = req.params.username;
-  res.send(username);
-});
-
 module.exports = router;
