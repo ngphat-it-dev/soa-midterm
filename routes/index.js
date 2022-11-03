@@ -1,8 +1,8 @@
 var express = require("express");
-const { checkSession } = require("../controllers/userController");
+const { checkSession, logout, checkLogin, getData } = require("../controllers/userController");
 var router = express.Router();
 
 /* GET home page. */
-router.get("/", checkSession);
-
+router.get("/", checkSession, getData);
+router.get("/logout", logout);
 module.exports = router;

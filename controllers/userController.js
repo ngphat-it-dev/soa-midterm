@@ -4,18 +4,18 @@ const userModel = require("../model/user.model");
 const app = express();
 
 let getData = (req, res) => {
-  userModel.find({ userName: req.params.username }, function (err, data) {
+  userModel.find({ userName: req.session.username }, function (err, data) {
     return res.render("user", { title: "iBanking", data: data[0] });
   });
 };
 
-let checkSession = (req, res) => {
-  if (req.session.username) return res.redirect("/user/" + req.session.username);
-  res.render("index", { title: "IBanking" });
+let checkSession = (req, res, next) => {
+  if (req.session.username) next();
+  else res.render("index");
 };
 
 let checkSession2 = (req, res) => {
-  if (req.session.username) return res.redirect("/user/" + req.session.username);
+  if (req.session.username) return res.redirect("/");
   res.render("form", { title: "Login Form", layout: null });
 };
 
@@ -34,8 +34,7 @@ let checkLogin = (req, res) => {
       } else {
         if (req.body.username == data[0].userName && req.body.password == data[0].password) {
           req.session.username = req.body.username;
-          var passedVariable = req.body.username;
-          return res.redirect("/user/" + passedVariable);
+          return res.redirect("/");
         } else {
           return res.send(`<script>alert("INVALID USERNAME OR PASSWORD"); window.location.href = "/login"; </script>`);
         }
@@ -43,4 +42,9 @@ let checkLogin = (req, res) => {
     }
   });
 };
-module.exports = { getData, checkSession, checkSession2, checkUser, checkLogin };
+
+let logout = (req, res) => {
+  req.session.destroy();
+  res.redirect("/login");
+};
+module.exports = { getData, checkSession, checkSession2, checkUser, checkLogin, logout };
