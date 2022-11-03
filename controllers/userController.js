@@ -16,7 +16,7 @@ let checkSession = (req, res) => {
 
 let checkSession2 = (req, res) => {
   if (req.session.username) return res.redirect("/user/" + req.session.username);
-  res.render("form", { title: "Login Form" });
+  res.render("form", { title: "Login Form", layout: null });
 };
 
 let checkUser = (req, res) => {

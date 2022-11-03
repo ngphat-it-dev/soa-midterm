@@ -35,6 +35,8 @@ app.use("/user", userRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
+  res.render("error", { title: "404 NOT FOUND PAGE", layout: null });
+
   next(createError(404));
 });
 
@@ -46,7 +48,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error", { title: "404 NOT FOUND PAGE" });
+  res.render("error", { title: "500 INTERNAL SERVER ERROR", layout: null });
 });
 
 module.exports = app;
