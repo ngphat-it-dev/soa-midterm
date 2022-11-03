@@ -1,11 +1,78 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{title}}</title>
-  </head>
-  <body>
-    <h1>payment</h1>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="/public/stylesheets/payment.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <h1>Checkout</h1>
+    <div class="form">
+       <div class="info">
+            <h3>Account Information</h3>
+            <div class="contact-info">
+                <label for="email">Account name</label><br>
+                <input class="input-box" type="text" name="accountname" id="accountname" placeholder="{{data.fullName}}" disabled>
+                <i class="fas fa-user-alt"></i><br>
+                <label for="email">Email</label><br>
+                <input class="input-box" type="email" name="e-mail" id="email" placeholder="{{data.gmail}}" disabled>
+                <i class="fas fa-envelope"></i><br>
+                <label for="tel">Phone</label><br>
+                <input class="input-box" type="tel" name="phone" id="tel" placeholder="{{data.phoneNumber}}" disabled>
+                <i class="fas fa-phone"></i><br>
+            </div>
+            <h3>Tuition Payment Information</h3>
+            <div class="shipping-info">
+                <label for="name">Full student name</label><br>
+                <input class="input-box" type="text" name="fullname" id="name" placeholder="" disabled>
+                <i class="fas fa-user-alt"></i><br>
+                <label for="address">Student ID</label><br>
+                <input class="input-box" type="text" name="address" id="address" placeholder="Enter your student id...">
+                <i class='far fa-address-card'></i><br>
+                <label for="city">Total payable</label><br>
+                <input class="input-box" type="text" name="city" id="city" placeholder="" disabled>
+                <i class='fas fa-dollar-sign'></i></i><br>
+                <div class="country-info">
+                    
+                </div>
+                <div class="postal-info">
+                   
+                </div>
+                <div id="clean"></div>
+                <br>
+                <input type="checkbox" name="save-info">  See this Information next time <br>
+                <div class="continue-button">
+                    <button id="continue" type="submit">Continue</button>
+                </div>
+                <div class="continue-button1">
+                   <a href="/user"> <button id="back" type="submit">Back</button></a>
+                </div>
+            </div>
+        </div>   
+        <div class="check-box">
+            <br>
+            <h3 id="Detail">Tuition Payment Information</h3>
+            <div class="price-table">
+
+                    <div class="price-description">Available balance: </div>
+                    <div class="price">${{data.numberBalance}}</div>
+                    <br> 
+                    <hr>
+                    <div class="price-description">Total payable</div>
+                    <div class="price">$</div>
+                    <br> 
+                    <hr>
+                    <div class="price-description">Residual</div>
+                    <div class="price">$148.98</div>
+                    
+            </div>
+        </div>
+    </div>
+</body>
 </html>

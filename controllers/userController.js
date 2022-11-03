@@ -47,4 +47,15 @@ let logout = (req, res) => {
   req.session.destroy();
   res.redirect("/login");
 };
-module.exports = { getData, checkSession, checkSession2, checkUser, checkLogin, logout };
+
+let getPayment = (req, res,next) => {
+   if (req.session.username) next();
+   else res.redirect("/login");
+};
+
+let getPaymentData = (req, res) => {
+  userModel.find({ userName: req.session.username }, function (err, data) {
+    return res.render("payment", { title: "Payment" ,data: data[0] });
+  });
+};
+module.exports = { getData, checkSession, checkSession2, checkUser, checkLogin, logout, getPayment , getPaymentData};

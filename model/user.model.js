@@ -5,7 +5,9 @@ const UserSchema = mongoose.Schema({
   fullName: String,
   phoneNumber: String,
   numberBalance: String,
-  transactionHistory: Object,
+  transactionHistory: [{
+    
+  }],
   OTP: String,
   password: String,
 });
