@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&display=swap");
+
+body {
+    background-color: #fcfcfc;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nav-bar {
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.nav-items>a:hover {
+    color: rgb(40, 37, 37);
+    font-weight: bold;
+    font-size: 125%;
+}
+
+.nav-items>a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: hsl(233, 8%, 62%);
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.nav-bar>a>button {
+    padding: 12px 28px;
+    border: none;
+    outline-width: 0;
+    color: white;
+    border-radius: 24px;
+    cursor: pointer;
+    font-weight: bold;
+    background-image: linear-gradient(120deg,
+            hsl(192, 70%, 51%),
+            hsl(136, 65%, 51%));
+
+}
+
+.container-r {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.footer {
+    background-color: hsl(233, 26%, 24%);
+    height: 30vh;
+}
+
+.footer-container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 2rem;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.menu>a {
+    text-decoration: none;
+    color: white;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.social-container {
+    margin-top: 3rem;
+}
+
+.social-container>img {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.footer-container>button {
+    margin-top: 3rem;
+    padding: 12px 28px;
+    border: none;
+    outline-width: 0;
+    color: white;
+    border-radius: 24px;
+    cursor: pointer;
+    font-weight: bold;
+    background-image: linear-gradient(120deg,
+            hsl(192, 70%, 51%),
+            hsl(136, 65%, 51%));
+}
+
+#test{
+    border: none;
+    outline-width: 0;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    background-image: linear-gradient(120deg,
+            hsl(192, 70%, 51%),
+            hsl(136, 65%, 51%));
+            
+}
+#test1 {
+    /* width: 50px !important; */
+    border: none;
+    outline-width: 0;
+    color: white;
+    cursor: pointer;
+    font-weight: bolder;
+    background-image: linear-gradient(120deg,
+            hsl(192, 70%, 51%),
+            hsl(136, 65%, 51%));
+
+}
+

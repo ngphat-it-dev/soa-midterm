@@ -7,7 +7,7 @@ var router = express.Router();
 /* GET user page. */
 router.get("/", checkUser);
 router.get("/:username", getData);
-router.post("/:username", getData);
+
 // router.post("/test", getData);
 
 module.exports = router;

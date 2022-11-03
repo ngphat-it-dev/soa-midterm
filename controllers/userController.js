@@ -5,7 +5,7 @@ const app = express();
 
 let getData = (req, res) => {
   userModel.find({ userName: req.params.username }, function (err, data) {
-    return res.json(data);
+    return res.render("user", { title: "iBanking", data: data[0] });
   });
 };
 
