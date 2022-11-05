@@ -29,30 +29,29 @@ function getStudentID() {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       success: function (result) {
-        const { numberBalance } = result;
 
         if (result.isPaid == true) {
-          status.innerHTML = "PAID IN FULL";
-          $("#available_balance").html(numberBalance)
+          status.innerHTML = "Chưa thanh toán";
           $("#name").val(result.transactionHistory[0].fullName);
           $("#tp").val(result.transactionHistory[0].bankBalance);
           $("#total_payable").html(result.transactionHistory[0].bankBalance);
           document.getElementById("continue").disabled = false;
+console.log(result);
+          if ((result.transactionHistory[0].bankBalance - result.numberBalance)<0) {
+            const final = result.transactionHistory[0].bankBalance - result.numberBalance;
+            
+            console.log(">> tiền mình có " + result.numberBalance);
 
-          const result1 = parseFloat(result.numberBalance.replace(/,/g, ""));
-          const result2 = parseFloat(result.transactionHistory[0].bankBalance.replace(/,/g, ""));
-          if (result1 > result2) {
-            const final = result1 - result2;
-            console.log("result1 " + result1 + " - " + result2 + ">>final " + final);
-            const final2 = new Intl.NumberFormat({ style: "currency", currency: "VND" }).format(final);
-            $("#residual").html(final2);
+            console.log(">> Tiền phải trả " + result.transactionHistory[0].bankBalance);
+            console.log(final)
+            $("#residual").html(final);
           } else {
             $("#show_error").css("visibility", "visible");
             $("#show_error").show();
             document.getElementById("continue").disabled = true;
           }
         } else if (result.isPaid == false) {
-          status.innerHTML = "OUTSTANDING EXPENSE";
+          status.innerHTML = "Đã thanh toán";
           $("#name").val(result.transactionHistory[0].fullName);
           $("#tp").val(result.transactionHistory[0].bankBalance);
           $("#total_payable").html("");
