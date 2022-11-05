@@ -8,7 +8,8 @@ const UserSchema = mongoose.Schema({
   isPaid: Boolean,
   stuID : String,
   transactionHistory: [{
-    
+    fullName: String,
+    bankBalance: String,
   }],
   OTP: String,
   password: String,

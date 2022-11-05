@@ -63,12 +63,11 @@ let getPaymentData = (req, res) => {
 let getJson =  (req,res) =>{
    userModel.findOne({ stuID: req.body.student_id }, function (err, data) {
    if (data) {
-       const isPaid = data?.isPaid;
-
-       return res.json({ isPaid });
+    return res.send(data)
+      //  const isPaid = data?.isPaid;
+      //  return res.json({ isPaid });
    } else {
-    // chuyen's nghiep len =))))
-    return res.status(200).json({code: 0, error: "K tim thay mssv", error_code: 2})
+    return res.status(200).json({code: 0, error: "Cannot found this student", error_code: 2})
    }
    });
 }

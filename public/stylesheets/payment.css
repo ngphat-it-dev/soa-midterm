@@ -93,6 +93,27 @@ i {
     margin-right: 12%;
 }
 
+#continue[disabled=disabled],
+#continue:disabled {
+    background-color: #cccccc !important;
+        color: #666666 !important;
+        opacity: 0.6 !important;
+        cursor: not-allowed !important;
+}
+#show_error{
+    display: none;
+    border-radius: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 25px;
+    margin: auto;
+    height:70px;
+    width:300px;
+    background-color: #f8d7da;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
 #continue {
     font-size: larger;
     padding: 15px 29px;
@@ -120,7 +141,12 @@ i {
 button:hover {
     cursor: pointer;
 }
-
+#status{
+    color: rgb(255, 68, 0);
+    font-weight: bold;
+        width: 80%;
+        padding: 8px 0px 8px 30px;
+}
 .check-box {
     /* margin-left: 1%; */
     margin-top: 3%;
