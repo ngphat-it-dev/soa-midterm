@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const userModel = require("../model/user.model");
+
 const app = express();
 
 let getData = (req, res) => {
@@ -58,4 +59,17 @@ let getPaymentData = (req, res) => {
     return res.render("payment", { title: "Payment" ,data: data[0] });
   });
 };
-module.exports = { getData, checkSession, checkSession2, checkUser, checkLogin, logout, getPayment , getPaymentData};
+
+let getJson =  (req,res) =>{
+   userModel.findOne({ stuID: req.body.student_id }, function (err, data) {
+   if (data) {
+       const isPaid = data?.isPaid;
+
+       return res.json({ isPaid });
+   } else {
+    // chuyen's nghiep len =))))
+    return res.status(200).json({code: 0, error: "K tim thay mssv", error_code: 2})
+   }
+   });
+}
+module.exports = { getData, checkSession, checkSession2, checkUser, checkLogin, logout, getPayment, getPaymentData, getJson };

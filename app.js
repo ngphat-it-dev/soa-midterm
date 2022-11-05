@@ -11,6 +11,7 @@ var loginRouter = require("./routes/login");
 var userRouter = require("./routes/user");
 var session = require("express-session");
 var paymentRouter = require("./routes/payment");
+var bodyParser = require('body-parser')
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -23,7 +24,8 @@ app.use(
     saveUninitialized: true,
   })
 );
-
+var jsonParser = bodyParser.json();
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

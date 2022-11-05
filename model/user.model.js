@@ -5,6 +5,8 @@ const UserSchema = mongoose.Schema({
   fullName: String,
   phoneNumber: String,
   numberBalance: String,
+  isPaid: Boolean,
+  stuID : String,
   transactionHistory: [{
     
   }],
