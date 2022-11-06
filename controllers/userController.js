@@ -72,4 +72,7 @@ let getJson =  (req,res) =>{
    });
 }
 
-module.exports = { getData, checkSession, checkSession2, checkUser, checkLogin, logout, getPayment, getPaymentData, getJson };
+let getOTP = (req, res) => {
+  return res.render("otp", { title: AuthenticatorAssertionResponse, layout: null });
+};
+module.exports = { getData, checkSession, checkSession2, checkUser, checkLogin, logout, getPayment, getPaymentData, getJson,getOTP };

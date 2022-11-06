@@ -1,9 +1,13 @@
 var express = require("express");
 var router = express.Router();
-
 const nodemailer = require("nodemailer");
+var app = express();
 const { OAuth2Client } = require("google-auth-library");
+const { getOTP } = require("../controllers/userController");
 const port = 3000;
+
+/* GET home page. */
+router.get("/", getOTP);
 
 const GOOGLE_MAILER_CLIENT_ID = "950533224618-bhgunr43dupg3j1a0m2rrgki547iverc.apps.googleusercontent.com";
 const GOOGLE_MAILER_CLIENT_SECRET = "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";
@@ -16,7 +20,7 @@ myOAuth2Client.setCredentials({
   refresh_token: GOOGLE_MAILER_REFRESH_TOKEN,
 });
 // Tạo API /email/send với method POST
-router.post("/authenticateOTP", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     // Lấy thông tin gửi lên từ client qua body
     const { email, subject, content } = req.body;
@@ -45,7 +49,18 @@ router.post("/authenticateOTP", async (req, res) => {
     const mailOptions = {
       to: email, // Gửi đến ai?
       subject: subject, // Tiêu đề email
-      html: `<h3>${content}</h3>`, // Nội dung email
+      html: `<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
+  <div style="width:70%;padding:20px 0">
+    <div style="border-bottom:1px solid #eee">
+      <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">IBanking</a>
+    </div>
+    <p style="font-size:1.1em">Hi,</p>
+    <p>Thank you for choosing IBanking. Use the following OTP to complete your authentication.<br> OTP is valid for 5 minutes. <br> Don't send it to another people</p>
+    <h2 style="background: #00466a;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px; margin:auto">324457</h2>
+    <p style="font-size:0.9em;">Regards,<br />IBanking</p>
+    <hr style="border:none;border-top:1px solid #eee" />
+  </div>
+</div>`, // Nội dung email
     };
     // Gọi hành động gửi email
     await transport.sendMail(mailOptions);
@@ -57,4 +72,6 @@ router.post("/authenticateOTP", async (req, res) => {
     res.status(500).json({ errors: error.message });
   }
 });
+
+
 module.exports = router;

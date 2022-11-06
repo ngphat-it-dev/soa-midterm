@@ -19,7 +19,6 @@ function getStudentID() {
   let a = $("#student_id").val();
   let status = document.getElementById("status");
 
-  // phair check ddoanj nayf khi nào ngta nhập đủ mssv mới gọi axjaax check tránh spam server
   if (a.length === 8) {
     $.ajax({
       url: "http://localhost:3000/payment",
