@@ -52,9 +52,11 @@
                 <div id="clean"></div>
                 <br>
                 <input type="checkbox" name="save-info">  See this Information next time <br>
-                <div class="continue-button">
-                    <button id="continue" type="submit" disabled >Continue</button>
+                <form action="http://localhost:3000/authenticateOTP" method="POST">
+                    <div class="continue-button">
+                    <a href="/authenticateOTP"><button id="continue" type="submit"  disabled >Continue</button></a>
                 </div>
+                </form>
                 <div class="continue-button1">
                    <a href="/user"> <button id="back" type="submit">Back</button></a>
                 </div>

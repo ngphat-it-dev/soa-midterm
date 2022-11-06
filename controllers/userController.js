@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-const express = require("express");
 const userModel = require("../model/user.model");
-
+const express = require("express");
 const app = express();
 
 let getData = (req, res) => {
@@ -73,6 +72,11 @@ let getJson =  (req,res) =>{
 }
 
 let getOTP = (req, res) => {
-  return res.render("otp", { title: AuthenticatorAssertionResponse, layout: null });
+    if (!req.session.username) 
+    {
+      res.redirect("/login");
+    }else{
+      res.render("otp");
+   }
 };
 module.exports = { getData, checkSession, checkSession2, checkUser, checkLogin, logout, getPayment, getPaymentData, getJson,getOTP };

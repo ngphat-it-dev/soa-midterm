@@ -28,23 +28,15 @@ function getStudentID() {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       success: function (result) {
-
         if (result.isPaid == true) {
           status.innerHTML = "Chưa thanh toán";
           $("#name").val(result.transactionHistory[0].fullName);
           $("#tp").val(result.transactionHistory[0].bankBalance);
           $("#total_payable").html(result.transactionHistory[0].bankBalance);
           document.getElementById("continue").disabled = false;
-          console.log(result);
-          console.log(">> tiền mình có " + result.numberBalance + result.transactionHistory[0].fullName);
-          const newresultnumberBalance = result.numberBalance; ;
-          console.log(">> Tiền phải trả " + result.transactionHistory[0].bankBalance);
+          const numberBalance = result.numberBalance; ;
           if ((result.transactionHistory[0].bankBalance - result.numberBalance)<0) {
             const final = result.transactionHistory[0].bankBalance - result.numberBalance;
-            
-            console.log(">> tiền mình có " + newresultnumberBalance);
-
-            console.log(">> Tiền phải trả " + result.transactionHistory[0].bankBalance);
             console.log(final)
             $("#residual").html(final);
           } else {

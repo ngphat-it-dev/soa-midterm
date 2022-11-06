@@ -5,7 +5,8 @@ var app = express();
 const { OAuth2Client } = require("google-auth-library");
 const { getOTP } = require("../controllers/userController");
 const port = 3000;
-
+const mongoose = require("mongoose");
+const userModel = require("../model/user.model");
 /* GET home page. */
 router.get("/", getOTP);
 
@@ -21,9 +22,22 @@ myOAuth2Client.setCredentials({
 });
 // Tạo API /email/send với method POST
 router.post("/", async (req, res) => {
+  let OTP = (Math.floor(Math.random() * 90000) + 10000).toString();
+  const { email } = req.body;
+
+  // if (!email) return res.send("Invalid email");
+
+  // const user = await userModel.findOne({ gmail: email });
+
+  const rs = await userModel.findOneAndUpdate({ gmail: email }, { OTP });
+
+
   try {
     // Lấy thông tin gửi lên từ client qua body
-    const { email, subject, content } = req.body;
+    // const { email, subject, content } = req.body;
+    let email = "giaphatthcs@gmail.com";
+    let subject ="Ibanking"
+    let content = OTP;
     if (!email || !subject || !content) throw new Error("Please provide email, subject and content!");
     /**
      * Lấy AccessToken từ RefreshToken (bởi vì Access Token cứ một khoảng thời gian ngắn sẽ bị hết hạn)
@@ -56,7 +70,7 @@ router.post("/", async (req, res) => {
     </div>
     <p style="font-size:1.1em">Hi,</p>
     <p>Thank you for choosing IBanking. Use the following OTP to complete your authentication.<br> OTP is valid for 5 minutes. <br> Don't send it to another people</p>
-    <h2 style="background: #00466a;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px; margin:auto">324457</h2>
+    <h2 style="background: #00466a;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px; margin:auto">${OTP}</h2>
     <p style="font-size:0.9em;">Regards,<br />IBanking</p>
     <hr style="border:none;border-top:1px solid #eee" />
   </div>
@@ -65,13 +79,13 @@ router.post("/", async (req, res) => {
     // Gọi hành động gửi email
     await transport.sendMail(mailOptions);
     // Không có lỗi gì thì trả về success
-    res.status(200).json({ message: "Email sent successfully." });
+    // res.status(200).send({ message: "Email sent successfully." });
+    res.render("otp");
   } catch (error) {
     // Có lỗi thì các bạn log ở đây cũng như gửi message lỗi về phía client
     console.log(error);
-    res.status(500).json({ errors: error.message });
+    res.status(500).send({ errors: error.message });
   }
 });
-
 
 module.exports = router;
