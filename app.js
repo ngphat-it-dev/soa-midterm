@@ -11,6 +11,7 @@ var loginRouter = require("./routes/login");
 var userRouter = require("./routes/user");
 var session = require("express-session");
 var paymentRouter = require("./routes/payment");
+var otpRouter = require("./routes/otp");
 var bodyParser = require('body-parser')
 
 // view engine setup
@@ -37,6 +38,7 @@ app.use("/payment", paymentRouter);
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
 app.use("/user", userRouter);
+app.use("/authenticateOTP", otpRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

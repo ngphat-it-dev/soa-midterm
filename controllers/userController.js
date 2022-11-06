@@ -71,4 +71,5 @@ let getJson =  (req,res) =>{
    }
    });
 }
+
 module.exports = { getData, checkSession, checkSession2, checkUser, checkLogin, logout, getPayment, getPaymentData, getJson };

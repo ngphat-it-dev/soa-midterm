@@ -36,11 +36,14 @@ function getStudentID() {
           $("#tp").val(result.transactionHistory[0].bankBalance);
           $("#total_payable").html(result.transactionHistory[0].bankBalance);
           document.getElementById("continue").disabled = false;
-console.log(result);
+          console.log(result);
+          console.log(">> tiền mình có " + result.numberBalance + result.transactionHistory[0].fullName);
+          const newresultnumberBalance = result.numberBalance; ;
+          console.log(">> Tiền phải trả " + result.transactionHistory[0].bankBalance);
           if ((result.transactionHistory[0].bankBalance - result.numberBalance)<0) {
             const final = result.transactionHistory[0].bankBalance - result.numberBalance;
             
-            console.log(">> tiền mình có " + result.numberBalance);
+            console.log(">> tiền mình có " + newresultnumberBalance);
 
             console.log(">> Tiền phải trả " + result.transactionHistory[0].bankBalance);
             console.log(final)
